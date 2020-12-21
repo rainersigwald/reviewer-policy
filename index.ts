@@ -2,6 +2,8 @@ const core = require('@actions/core');
 const github = require('@actions/github');
 import * as Webhooks from '@octokit/webhooks'
 
+async function Yolo() {
+
 try {
     const myToken = core.getInput('repo-token');
 
@@ -24,7 +26,7 @@ try {
         console.log(`repo object is ${JSON.stringify(review.repository, undefined, 2)}`);
 
         if (review) {
-            const reviews = octokit.pulls.listReviews(
+            const reviews = await octokit.pulls.listReviews(
                 review.repository.owner.login,
                 review.repository.name,
                 review.pull_request.number);
@@ -47,3 +49,7 @@ try {
 } catch (error) {
     core.setFailed(error.message);
 }
+
+}
+
+Yolo();
