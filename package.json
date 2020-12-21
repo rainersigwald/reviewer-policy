@@ -2,9 +2,10 @@
   "name": "reviewer-policy",
   "version": "0.1.0",
   "description": "",
-  "main": "index.js",
+  "main": "dist/index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "ncc": "ncc build index.ts --license licenses.txt"
   },
   "repository": {
     "type": "git",
@@ -16,5 +17,13 @@
   "bugs": {
     "url": "https://github.com/rainersigwald/reviewer-policy/issues"
   },
-  "homepage": "https://github.com/rainersigwald/reviewer-policy#readme"
+  "homepage": "https://github.com/rainersigwald/reviewer-policy#readme",
+  "dependencies": {
+    "@actions/core": "^1.2.6",
+    "@actions/github": "^4.0.0",
+    "@octokit/webhooks": "^7.21.0"
+  },
+  "devDependencies": {
+    "typescript": "^4.1.3"
+  }
 }
