@@ -19,10 +19,9 @@ try {
                 review.repository.name,
                 review.pull_request.number);
 
-            reviews.forEach(r => {
-                const payload = JSON.stringify(r, undefined, 2)
-                console.log(`The event payload: ${payload}`);
-            });
+            const payload = JSON.stringify(reviews, undefined, 2);
+
+
         } else {
             throw new Error("😱");
 

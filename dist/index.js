@@ -5786,10 +5786,7 @@ try {
         var review = github.context.payload;
         if (review) {
             var reviews = octokit.pulls.listReviews(review.repository.owner, review.repository.name, review.pull_request.number);
-            reviews.forEach(function (r) {
-                var payload = JSON.stringify(r, undefined, 2);
-                console.log("The event payload: " + payload);
-            });
+            var payload_2 = JSON.stringify(reviews, undefined, 2);
         }
         else {
             throw new Error("😱");
