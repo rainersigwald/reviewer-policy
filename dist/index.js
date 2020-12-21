@@ -5786,8 +5786,10 @@ try {
         var payload_1 = JSON.stringify(github.context.payload, undefined, 2);
         console.log("The event payload: " + payload_1);
         var review = github.context.payload;
+        console.log("octokit.pulls.listReviews(\n            " + review.repository.owner.login + ",\n            " + review.repository.name + ",\n            " + review.pull_request.number + ")");
+        console.log("repo object is " + JSON.stringify(review.repository, undefined, 2));
         if (review) {
-            var reviews = octokit.pulls.listReviews(review.repository.owner, review.repository.name, review.pull_request.number);
+            var reviews = octokit.pulls.listReviews(review.repository.owner.login, review.repository.name, review.pull_request.number);
             console.log("The reviews: " + JSON.stringify(reviews, undefined, 2));
         }
         else {

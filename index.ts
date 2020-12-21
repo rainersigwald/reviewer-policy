@@ -5,7 +5,7 @@ import * as Webhooks from '@octokit/webhooks'
 try {
     const myToken = core.getInput('repo-token');
 
-    const octokit = github.getOctokit(myToken)
+    const octokit = github.getOctokit(myToken);
 
     console.log(`The event name: ${github.context.eventName}`);
     console.log(`The whole context: ${github.context}`);
@@ -16,15 +16,20 @@ try {
         
         const review = github.context.payload as Webhooks.EventPayloads.WebhookPayloadPullRequestReview;
 
+        console.log(`octokit.pulls.listReviews(
+            ${review.repository.owner.login},
+            ${review.repository.name},
+            ${review.pull_request.number})`)
+
+        console.log(`repo object is ${JSON.stringify(review.repository, undefined, 2)}`);
+
         if (review) {
             const reviews = octokit.pulls.listReviews(
-                review.repository.owner,
+                review.repository.owner.login,
                 review.repository.name,
                 review.pull_request.number);
 
             console.log(`The reviews: ${JSON.stringify(reviews, undefined, 2)}`);
-
-
         } else {
             throw new Error("😱");
 
