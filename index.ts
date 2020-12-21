@@ -22,7 +22,7 @@ try {
                 review.repository.name,
                 review.pull_request.number);
 
-            const payload = JSON.stringify(reviews, undefined, 2);
+            console.log(`The reviews: ${JSON.stringify(reviews, undefined, 2)}`);
 
 
         } else {
