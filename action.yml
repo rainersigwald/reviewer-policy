@@ -1,5 +1,8 @@
-name: 'Hello World'
-description: 'Greet someone and record the time'
+name: 'Reviewer Policy'
+description: 'Ensure a number of approved reviewers'
+branding:
+  icon: 'eye'
+  color: 'blue'
 inputs:
   who-to-greet:  # id of input
     description: 'Who to greet'
