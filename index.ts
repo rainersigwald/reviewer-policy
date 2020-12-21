@@ -46,8 +46,7 @@ try {
     console.log(`The event payload: ${payload}`);
 } catch (error) {
     core.setFailed(error.message);
-    console.log(`The event payload: ${JSON.stringify(error, undefined, 2)}`);
-
+    console.log(`error stack: ${error.stack}`);
 }
 
 }

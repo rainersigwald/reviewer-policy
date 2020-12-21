@@ -5847,7 +5847,7 @@ function Yolo() {
                 case 4:
                     error_1 = _a.sent();
                     core.setFailed(error_1.message);
-                    console.log("The event payload: " + JSON.stringify(error_1, undefined, 2));
+                    console.log("error stack: " + error_1.stack);
                     return [3 /*break*/, 5];
                 case 5: return [2 /*return*/];
             }
