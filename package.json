@@ -16,5 +16,9 @@
   "bugs": {
     "url": "https://github.com/rainersigwald/reviewer-policy/issues"
   },
-  "homepage": "https://github.com/rainersigwald/reviewer-policy#readme"
+  "homepage": "https://github.com/rainersigwald/reviewer-policy#readme",
+  "dependencies": {
+    "@actions/core": "^1.2.6",
+    "@actions/github": "^4.0.0"
+  }
 }
