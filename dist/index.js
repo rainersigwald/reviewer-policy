@@ -5780,6 +5780,8 @@ var github = __webpack_require__(797);
 try {
     var myToken = core.getInput('repo-token');
     var octokit = github.getOctokit(myToken);
+    console.log("The event name: " + github.context.eventName);
+    console.log("The whole context: " + github.context.eventName);
     if (github.context.eventName === 'pull_request_review') {
         var payload_1 = JSON.stringify(github.context.payload, undefined, 2);
         console.log("The event payload: " + payload_1);
