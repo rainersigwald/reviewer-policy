@@ -1,15 +1,15 @@
-on: [push, workflow_dispatch]
+on: [workflow_dispatch, pull_request_review]
 
 jobs:
   hello_world_job:
     runs-on: ubuntu-latest
-    name: A job to say hello
+    name: PR Reviewer Policy
     steps:
       # To use this repository's private action,
       # you must check out the repository
       - name: Checkout
         uses: actions/checkout@v2
-      - name: Hello world action step
+      - name: Reviewer policy
         uses: ./ # Uses an action in the root directory
         id: hello
         with:
