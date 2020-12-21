@@ -5829,7 +5829,6 @@ function Yolo() {
                     console.log("The event payload: " + payload_1);
                     review = github.context.payload;
                     console.log("octokit.pulls.listReviews(\n            " + review.repository.owner.login + ",\n            " + review.repository.name + ",\n            " + review.pull_request.number + ")");
-                    console.log("repo object is " + JSON.stringify(review.repository, undefined, 2));
                     if (!review) return [3 /*break*/, 2];
                     return [4 /*yield*/, octokit.pulls.listReviews(review.repository.owner.login, review.repository.name, review.pull_request.number)];
                 case 1:
@@ -5847,6 +5846,7 @@ function Yolo() {
                     return [3 /*break*/, 5];
                 case 4:
                     error_1 = _a.sent();
+                    console.log("The event payload: " + JSON.stringify(error_1, undefined, 2));
                     core.setFailed(error_1.message);
                     return [3 /*break*/, 5];
                 case 5: return [2 /*return*/];

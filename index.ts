@@ -23,8 +23,6 @@ try {
             ${review.repository.name},
             ${review.pull_request.number})`)
 
-        console.log(`repo object is ${JSON.stringify(review.repository, undefined, 2)}`);
-
         if (review) {
             const reviews = await octokit.pulls.listReviews(
                 review.repository.owner.login,
@@ -47,6 +45,8 @@ try {
     const payload = JSON.stringify(github.context.payload, undefined, 2)
     console.log(`The event payload: ${payload}`);
 } catch (error) {
+    console.log(`The event payload: ${JSON.stringify(error, undefined, 2)}`);
+
     core.setFailed(error.message);
 }
 
