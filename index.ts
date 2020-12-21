@@ -8,7 +8,7 @@ try {
     const octokit = github.getOctokit(myToken)
 
     console.log(`The event name: ${github.context.eventName}`);
-    console.log(`The whole context: ${github.context.eventName}`);
+    console.log(`The whole context: ${github.context}`);
 
     if (github.context.eventName === 'pull_request_review') {
         const payload = JSON.stringify(github.context.payload, undefined, 2)
