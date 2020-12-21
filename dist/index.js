@@ -2,28 +2,6 @@ module.exports =
 /******/ (() => { // webpackBootstrap
 /******/ 	var __webpack_modules__ = ({
 
-/***/ 576:
-/***/ ((__unused_webpack_module, __unused_webpack_exports, __webpack_require__) => {
-
-const core = __webpack_require__(293);
-const github = __webpack_require__(797);
-
-try {
-    // `who-to-greet` input defined in action metadata file
-    const nameToGreet = core.getInput('who-to-greet');
-    console.log(`Hello ${nameToGreet}!`);
-    const time = (new Date()).toTimeString();
-    core.setOutput("time", time);
-    // Get the JSON webhook payload for the event that triggered the workflow
-    const payload = JSON.stringify(github.context.payload, undefined, 2)
-    console.log(`The event payload: ${payload}`);
-} catch (error) {
-    core.setFailed(error.message);
-}
-
-
-/***/ }),
-
 /***/ 606:
 /***/ (function(__unused_webpack_module, exports, __webpack_require__) {
 
@@ -5791,6 +5769,48 @@ function wrappy (fn, cb) {
 
 /***/ }),
 
+/***/ 352:
+/***/ ((__unused_webpack_module, exports, __webpack_require__) => {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+var core = __webpack_require__(293);
+var github = __webpack_require__(797);
+try {
+    var myToken = core.getInput('repo-token');
+    var octokit = github.getOctokit(myToken);
+    if (github.context.eventName === 'pull_request_review') {
+        var payload_1 = JSON.stringify(github.context.payload, undefined, 2);
+        console.log("The event payload: " + payload_1);
+        var review = github.context.payload;
+        if (review) {
+            var reviews = octokit.pulls.listReviews(review.repository.owner, review.repository.name, review.pull_request.number);
+            reviews.forEach(function (r) {
+                var payload = JSON.stringify(r, undefined, 2);
+                console.log("The event payload: " + payload);
+            });
+        }
+        else {
+            throw new Error("😱");
+        }
+    }
+    // `who-to-greet` input defined in action metadata file
+    var nameToGreet = core.getInput('who-to-greet');
+    console.log("Hello " + nameToGreet + "!");
+    var time = (new Date()).toTimeString();
+    core.setOutput("time", time);
+    // Get the JSON webhook payload for the event that triggered the workflow
+    var payload = JSON.stringify(github.context.payload, undefined, 2);
+    console.log("The event payload: " + payload);
+}
+catch (error) {
+    core.setFailed(error.message);
+}
+
+
+/***/ }),
+
 /***/ 162:
 /***/ ((module) => {
 
@@ -5941,6 +5961,6 @@ module.exports = require("zlib");;
 /******/ 	// module exports must be returned from runtime so entry inlining is disabled
 /******/ 	// startup
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(576);
+/******/ 	return __webpack_require__(352);
 /******/ })()
 ;
